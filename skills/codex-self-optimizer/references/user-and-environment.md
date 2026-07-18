@@ -9,6 +9,7 @@ Use this reference to adapt optimization to the current user, device, available 
 - Scan Scope And Write Policy
 - User Classification
 - Environment Maturity
+- Blank Setup Bootstrap
 - Workspace Missing
 - Path Discovery
 - Low Network Or No Network
@@ -86,6 +87,21 @@ Before strategy depends on this classification, show the inferred labels and evi
 | Team | Shared rules, permissions, audit needs | Suggest first, confirm authority before writes |
 
 Missing Workspace, memory, skills, SOPs, retrospectives, or pitfall logs is not failure. Report what is missing, how it limits confidence, and which fallback strategy will be used.
+
+## Blank Setup Bootstrap
+
+Use this path when the user has no other custom skills, no Workspace, no memory, or no durable docs.
+
+1. State that this skill can still run as a bootstrap guide, but specialized skills are optional accelerators, not prerequisites.
+2. Run the read-only Bootstrap Preflight and list what exists, what is missing, and what must not be scanned.
+3. Ask for the user's immediate goal in plain language if it is not already clear.
+4. Recommend a Workspace only if it would help continuity; explain benefits and let the user choose the path.
+5. Produce an initial plan for `AGENTS.md`, working memory, skill strategy, and verification habits before writing anything.
+6. Suggest foundational skills only as optional next steps. Useful categories include prompt optimization, skill creation, web research, debugging, testing, and verification.
+7. Write only after Proposed Changes, backup or restore records, and explicit user confirmation.
+8. After the first setup, run one more self-optimization pass using the newly created evidence.
+
+Do not fail because optional skills are absent. Use built-in reasoning and available tools, and record confidence limits clearly.
 
 ## Workspace Missing
 

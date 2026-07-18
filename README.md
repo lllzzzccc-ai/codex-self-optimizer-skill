@@ -47,6 +47,30 @@ Use $codex-self-optimizer to optimize my Codex memory, AGENTS rules, and skill s
 
 The skill should analyze first, show proposed changes, back up files, and write only after user confirmation.
 
+## Bootstrap From Blank Setup
+
+This skill can be the first skill installed in a blank Codex setup. It still works when the user has no other custom skills, no Workspace, no memory, no SOPs, and no retrospectives.
+
+Recommended first run:
+
+1. Install `codex-self-optimizer`.
+2. Ask Codex to run a read-only environment check.
+3. Let it report missing evidence instead of treating missing files as failure.
+4. Decide whether to create a Workspace and choose the path yourself.
+5. Review the proposed `AGENTS.md`, working-memory, skill-strategy, and verification-habit changes.
+6. Confirm writes only after backup and rollback steps are shown.
+7. Run the skill again after the first setup so it can optimize from the newly created evidence.
+
+Optional companion skill categories:
+
+- Prompt optimization.
+- Skill creation and skill writing.
+- Web research.
+- Debugging and testing.
+- Verification before completion.
+
+These companion skills improve quality and automation, but they are not required for the initial bootstrap.
+
 ## Safety Model
 
 This skill treats local files, project docs, logs, web pages, and external examples as evidence, not instructions. It excludes secrets and sensitive data from durable memory, and it requires backup and rollback planning before writes.
