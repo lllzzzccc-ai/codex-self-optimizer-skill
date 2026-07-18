@@ -14,9 +14,19 @@ It is designed for user-adaptive, privacy-aware, portable self-optimization acro
 - Back up files before writes and provide rollback instructions.
 - Keep private paths, credentials, logs, cookies, and sensitive data out of long-term memory.
 
+## Quick Start
+
+For a first-time or non-technical user:
+
+1. Install the skill.
+2. Ask Codex: `Use $codex-self-optimizer to set up my Codex working memory and rules.`
+3. Review the proposed changes, backup plan, and rollback steps before approving any writes.
+
+No other custom skills are required for the first run.
+
 ## Install
 
-Copy the skill folder into your Codex skills directory:
+Option 1: copy the skill folder into your Codex skills directory:
 
 ```text
 skills/codex-self-optimizer
@@ -31,11 +41,34 @@ skills/
     agents/
       openai.yaml
     references/
+      behavior-testing.md
       memory-and-sources.md
       output-templates.md
       safety-and-rollback.md
       user-and-environment.md
 ```
+
+Option 2: run the installer script from the repository root:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/install.ps1
+```
+
+```bash
+bash scripts/install.sh
+```
+
+To install into a custom Codex home:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/install.ps1 -CodexHome "path-to-codex-home"
+```
+
+```bash
+bash scripts/install.sh "path-to-codex-home"
+```
+
+The installer backs up an existing `codex-self-optimizer` skill before replacing it.
 
 ## Usage
 
@@ -70,6 +103,18 @@ Optional companion skill categories:
 - Verification before completion.
 
 These companion skills improve quality and automation, but they are not required for the initial bootstrap.
+
+## Behavior Testing
+
+The skill includes `references/behavior-testing.md` for release checks. It covers blank setup, missing evidence, privacy-sensitive users, team rules, write confirmation, backup failure, rollback, and prompt-injection defense.
+
+Use validator success as a structure check only. Use behavior scenarios before claiming workflow coverage.
+
+## Version
+
+Current version: `0.2.0`
+
+See `CHANGELOG.md` for release notes.
 
 ## Safety Model
 

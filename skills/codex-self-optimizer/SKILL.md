@@ -48,6 +48,7 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 - Read `references/memory-and-sources.md` when scanning evidence, optimizing user prompts, reviewing skill coverage, researching missing capabilities, or deciding what becomes memory.
 - Read `references/safety-and-rollback.md` before proposing or performing any file change.
 - Read `references/output-templates.md` before producing reports, confirmation checklists, restore plans, or self-test notes.
+- Read `references/behavior-testing.md` before claiming behavioral coverage, planning release validation, or testing this skill on blank, basic, mature, privacy-sensitive, or team environments.
 
 ## Write Targets
 
