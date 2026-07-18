@@ -26,6 +26,9 @@ Before publishing a release, run or manually review these gates:
 
 - `SKILL.md` validates.
 - All directly referenced files exist and are readable.
+- Installers parse successfully.
+- Installer dry-run, check, install, and uninstall paths are tested in temporary Codex homes.
+- GitHub Actions or an equivalent local validation script passes.
 - Public files contain no private paths, usernames, emails, credentials, tokens, cookies, or account data.
 - Blank setup path produces a useful plan without requiring other skills.
 - Existing-user path preserves current user rules and does not force the author's personal defaults.

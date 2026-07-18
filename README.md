@@ -70,6 +70,25 @@ bash scripts/install.sh "path-to-codex-home"
 
 The installer backs up an existing `codex-self-optimizer` skill before replacing it.
 
+Installer modes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/install.ps1 -DryRun
+powershell -ExecutionPolicy Bypass -File scripts/install.ps1 -Check
+powershell -ExecutionPolicy Bypass -File scripts/install.ps1 -Uninstall
+```
+
+```bash
+bash scripts/install.sh --dry-run
+bash scripts/install.sh --check
+bash scripts/install.sh --uninstall
+```
+
+- `--dry-run` / `-DryRun`: show what would happen without changing files.
+- `--check` / `-Check`: verify the installed copy matches this repository source.
+- `--uninstall` / `-Uninstall`: back up the installed copy, then remove it.
+- `--force` / `-Force`: accepted for non-interactive automation compatibility.
+
 ## Usage
 
 Ask Codex to use the skill, for example:
@@ -110,9 +129,41 @@ The skill includes `references/behavior-testing.md` for release checks. It cover
 
 Use validator success as a structure check only. Use behavior scenarios before claiming workflow coverage.
 
+Run local validation from the repository root:
+
+```bash
+python scripts/validate.py
+```
+
+GitHub Actions runs the same repository validation plus PowerShell and Bash installer checks on push and pull request.
+
+Example outputs are in `examples/`:
+
+- `blank-setup-report.md`
+- `proposed-changes.md`
+- `self-test-record.md`
+- `rollback-plan.md`
+
+## Who This Is For
+
+- Personal Codex users who want durable assistant behavior across projects.
+- Developers who want safer memory, skill, prompt, and workspace maintenance.
+- First-time users who need a bootstrap path without existing skills or notes.
+- Privacy-sensitive or team users who need confirmation, scope control, and rollback.
+
+## Known Limits
+
+- It cannot guarantee behavior from validators alone; scenario testing is still required.
+- It should not replace organization policy, security review, or user authority checks.
+- It should not copy one user's personal always-on skill list into another user's setup.
+
+## Contributing And Security
+
+See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability reporting.
+
 ## Version
 
-Current version: `0.2.0`
+Current version: `0.3.0`
 
 See `CHANGELOG.md` for release notes.
 

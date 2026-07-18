@@ -50,6 +50,10 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 - Read `references/output-templates.md` before producing reports, confirmation checklists, restore plans, or self-test notes.
 - Read `references/behavior-testing.md` before claiming behavioral coverage, planning release validation, or testing this skill on blank, basic, mature, privacy-sensitive, or team environments.
 
+## Repository Maintenance
+
+When maintaining or publishing this skill, run the repository validator and installer checks when available. A passing validator is structural evidence only; release notes must still state any untested behavior scenarios.
+
 ## Write Targets
 
 - Default long-term output: `CODEX_SELF_OPTIMIZATION.md`.
