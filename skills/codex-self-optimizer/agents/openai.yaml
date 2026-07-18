@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Self Optimizer"
+  short_description: "Optimize Codex memory, rules, and skills"
+  default_prompt: "Use $codex-self-optimizer to rebuild or refine my Codex working memory, AGENTS rules, and skill strategy."

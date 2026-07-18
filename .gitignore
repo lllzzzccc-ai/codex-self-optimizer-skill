@@ -1,0 +1,28 @@
+﻿# Local/private runtime files
+.env
+*.key
+*.pem
+*.p12
+*.pfx
+*.token
+*.secret
+
+# Codex/user runtime data
+AGENTS.md
+CODEX_WORKING_MEMORY.md
+.codex/
+browser_data/
+Cookies
+Login Data*
+Local Storage/
+Session Storage/
+IndexedDB/
+Service Worker/
+logs/
+*.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
