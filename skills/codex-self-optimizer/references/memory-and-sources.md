@@ -16,6 +16,7 @@ Use this reference when deciding what to scan, what to trust, what to persist, a
 - Lifecycle Labels
 - User Prompt Optimization
 - Skill Scan
+- Token Efficiency
 
 ## Source Priority
 
@@ -160,3 +161,15 @@ When scanning skills:
 - Do not add every skill to always-on behavior.
 - Recommend only high-frequency, high-value, cross-context skills.
 - Propose new skills, subagents, or automations as candidates first.
+
+## Token Efficiency
+
+Treat context budget as a user resource.
+
+- Default to the smallest scan that can answer the current request.
+- Keep simple Q&A lightweight: do not surface internal prompt rewrites, full skill rationale, or long logs.
+- For execution, file changes, research, plans, and high-risk tasks, state selected skills and purpose briefly.
+- Fully read or refresh a skill when the user names it, the skill is being edited or verified, it is first use in the session, behavior changed, or a prior attempt failed.
+- Prefer key evidence over full output: command, exit code, changed files, important values, and exact error summary.
+- Expand full logs only for failures, audit requests, security-sensitive decisions, or when the user asks.
+- Do not persist raw logs as memory. Extract reusable lessons and cite where detailed evidence can be found.

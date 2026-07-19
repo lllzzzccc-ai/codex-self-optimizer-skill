@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 - 2026-07-19
+
+- Added token-efficiency guidance: default lightweight operation, strict mode for high-risk tasks, concise skill announcements, and summarized verification evidence.
+- Added guidance to preserve durable lessons when cleaning up canceled task artifacts.
+- Updated README to explain the lightweight/strict operating model.
+
 ## 0.3.0 - 2026-07-18
 
 - Added GitHub Actions validation for repository structure and installers.

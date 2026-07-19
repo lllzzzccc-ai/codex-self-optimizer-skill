@@ -13,6 +13,7 @@ Use these templates for reports, confirmation, rollback, and self-test communica
 - CODEX_SELF_OPTIMIZATION.md Structure
 - Self-Test Notice
 - Self-Test Record
+- Token-Efficient Summary
 
 ## Optimization Report
 
@@ -24,8 +25,10 @@ Use these templates for reports, confirmation, rollback, and self-test communica
 - Device/environment:
 - Scan scope:
 - Write policy:
+- Operating depth: lightweight or strict, with trigger reason
 - Evidence found:
 - Missing evidence:
+- Token-efficiency decisions:
 - Capability gaps:
 - Risks:
 - Recommended changes:
@@ -153,3 +156,16 @@ For each self-test, record:
 ```
 
 Do not claim behavioral coverage from validator success alone. Validator success proves structure; behavior tests prove the workflow.
+
+## Token-Efficient Summary
+
+```markdown
+## Verification Summary
+
+- Commands:
+- Result:
+- Key evidence:
+- Changed files:
+- Skipped or truncated details:
+- Full logs available when:
+```

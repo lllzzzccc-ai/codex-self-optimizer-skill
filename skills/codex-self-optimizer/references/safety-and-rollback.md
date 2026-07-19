@@ -15,6 +15,7 @@ Use this reference before any file creation, write, move, delete, overwrite, or 
 - Privacy Filter
 - Team And Permission Safety
 - AGENTS.md Safety
+- Task Cancellation And Artifact Cleanup
 
 ## Backup Rule
 
@@ -126,3 +127,13 @@ When useful context contains sensitive values, summarize the behavior and redact
 - If rules conflict, ask the user instead of silently merging.
 - Keep `AGENTS.md` concise; move long details to memory or project docs.
 - After editing, remind the user that a new session may be required for full effect.
+
+## Task Cancellation And Artifact Cleanup
+
+When a user cancels a task or asks to delete created files, separate cleanup targets before deleting:
+
+- Generated artifacts: drafts, builds, caches, temporary project folders, media outputs, dependency folders, and other task products may be proposed for deletion.
+- Durable lessons: retrospectives, pitfall logs, SOPs, working memory, confirmed long-term rules, and source-index records are retained by default.
+- If the user says to delete "everything", ask whether durable lessons should also be removed before deleting them.
+- If a lesson was learned during the canceled task, preserve it in the appropriate memory or pitfall target before deleting artifacts, unless the user explicitly declines.
+- Report what was deleted, what was retained, and how to restore modified files from the run backup.

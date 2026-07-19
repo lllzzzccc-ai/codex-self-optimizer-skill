@@ -9,6 +9,7 @@ It is designed for user-adaptive, privacy-aware, portable self-optimization acro
 - Rebuild working memory after a memory reset or device change.
 - Refine `AGENTS.md` without bloating global rules.
 - Review skill coverage and propose missing skills.
+- Reduce routine token use with a lightweight default mode while keeping strict safety for risky tasks.
 - Separate scan scope from write policy.
 - Handle missing Workspace, memory, SOP, retrospective, or pitfall logs as a normal degraded mode.
 - Back up files before writes and provide rollback instructions.
@@ -99,6 +100,15 @@ Use $codex-self-optimizer to optimize my Codex memory, AGENTS rules, and skill s
 
 The skill should analyze first, show proposed changes, back up files, and write only after user confirmation.
 
+## Lightweight By Default, Strict When Needed
+
+The skill treats token budget as a user resource:
+
+- Simple Q&A and low-risk routine work should stay concise.
+- Execution, file changes, research, plans, and high-risk tasks should briefly state selected skills and purpose.
+- Git, publishing, deletion, migration, system config, permissions, backups, AGENTS, memory, and skill edits should switch to strict mode with backup, confirmation, and verification.
+- Validation results should report key evidence by default. Full logs should be expanded for failures, audits, security-sensitive decisions, or user request.
+
 ## Bootstrap From Blank Setup
 
 This skill can be the first skill installed in a blank Codex setup. It still works when the user has no other custom skills, no Workspace, no memory, no SOPs, and no retrospectives.
@@ -163,7 +173,7 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 
 ## Version
 
-Current version: `0.3.0`
+Current version: `0.3.1`
 
 See `CHANGELOG.md` for release notes.
 
