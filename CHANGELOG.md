@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2 - 2026-07-20
+
+- Clarified that installing or invoking the skill is not confirmation to create a Workspace.
+- Added Workspace creation result reporting: final path, created items, verification, and rollback steps.
+- Added cross-chat continuation handoff guidance so new chats continue from durable evidence instead of assumed chat history.
+
 ## 0.3.1 - 2026-07-19
 
 - Added token-efficiency guidance: default lightweight operation, strict mode for high-risk tasks, concise skill announcements, and summarized verification evidence.

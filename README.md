@@ -12,6 +12,8 @@ It is designed for user-adaptive, privacy-aware, portable self-optimization acro
 - Reduce routine token use with a lightweight default mode while keeping strict safety for risky tasks.
 - Separate scan scope from write policy.
 - Handle missing Workspace, memory, SOP, retrospective, or pitfall logs as a normal degraded mode.
+- Confirm Workspace creation separately from skill installation, then report the final path, created files, verification, and rollback steps.
+- Preserve cross-chat continuity through concise handoff notes when useful.
 - Back up files before writes and provide rollback instructions.
 - Keep private paths, credentials, logs, cookies, and sensitive data out of long-term memory.
 
@@ -119,9 +121,14 @@ Recommended first run:
 2. Ask Codex to run a read-only environment check.
 3. Let it report missing evidence instead of treating missing files as failure.
 4. Decide whether to create a Workspace and choose the path yourself.
-5. Review the proposed `AGENTS.md`, working-memory, skill-strategy, and verification-habit changes.
-6. Confirm writes only after backup and rollback steps are shown.
-7. Run the skill again after the first setup so it can optimize from the newly created evidence.
+5. If a Workspace is created, check the reported final path, created files, verification result, and rollback steps.
+6. Review the proposed `AGENTS.md`, working-memory, skill-strategy, and verification-habit changes.
+7. Confirm writes only after backup and rollback steps are shown.
+8. Run the skill again after the first setup so it can optimize from the newly created evidence.
+
+## Continuing In A New Chat
+
+New chats may not have the full previous conversation. For unfinished work, ask Codex to create a concise handoff with the goal, completed work, pending steps, important paths, verification evidence, risks, rollback notes, and next command or question. In the next chat, ask Codex to read that handoff before continuing.
 
 Optional companion skill categories:
 
@@ -173,7 +180,7 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 
 ## Version
 
-Current version: `0.3.1`
+Current version: `0.3.2`
 
 See `CHANGELOG.md` for release notes.
 

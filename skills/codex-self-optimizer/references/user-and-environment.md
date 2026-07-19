@@ -13,6 +13,7 @@ Use this reference to adapt optimization to the current user, device, available 
 - Workspace Missing
 - Path Discovery
 - Low Network Or No Network
+- Conversation Continuity
 
 ## Goal Handling
 
@@ -113,7 +114,10 @@ If no Workspace is found:
 4. On Windows, prefer a non-system disk only when one is detected and writable. If none is available, suggest a user-profile Workspace. On macOS/Linux, suggest a home-directory Workspace.
 5. Let the user choose the path.
 6. Do not create a Workspace before confirmation.
-7. If the user declines, continue with current project-level or session-level optimization.
+7. Treat skill installation, "use this skill", or a generic "confirm" as insufficient unless the user has also confirmed Workspace creation and the final path.
+8. After creating a Workspace, report the final path, created files and directories, verification result, and rollback steps.
+9. If the user cannot find the Workspace, search only the confirmed candidate path and report evidence before suggesting broader scans.
+10. If the user declines, continue with current project-level or session-level optimization.
 
 ## Path Discovery
 
@@ -133,3 +137,16 @@ Never assume a fixed drive, username, operating system, Workspace path, or Codex
 The skill must work offline. Use local files first. Treat network, sandbox, permission, or runtime failures as environment issues rather than rule failures.
 
 Ask before using network sources or external tools unless the user explicitly requested research. Never upload sensitive local content as a search query.
+
+## Conversation Continuity
+
+New chats may not inherit the full previous conversation. Do not assume another chat can continue from transient chat context alone.
+
+When continuity matters:
+
+1. Check whether a durable handoff, working memory, project note, or task summary exists.
+2. If none exists and the current task has reusable or unfinished state, propose writing a concise handoff before ending or switching chats.
+3. Include only the current goal, decisions, completed work, pending steps, important paths, verification evidence, risks, and the next command or question.
+4. Exclude secrets, private messages, credentials, raw logs, and one-off chatter.
+5. Write the handoff only after backup or restore records and explicit user confirmation.
+6. In a new chat, read the relevant durable handoff or memory before claiming the task can be continued.

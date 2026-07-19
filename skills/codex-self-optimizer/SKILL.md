@@ -35,7 +35,7 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 4. Infer user group and environment maturity from evidence, show the basis, and ask the user to confirm or correct when it affects the optimization strategy.
 5. Choose scan scope only when needed: quick incremental, full deep, or user-specified scope. Keep write policy separate: report-only by default, write only after confirmation.
 6. Read only relevant evidence. Prefer current user instructions, `AGENTS.md`, working memory, SOPs, retrospectives, pitfall logs, skills, and project docs.
-7. If Workspace, memory, skills, SOPs, retrospectives, or pitfall logs are missing, explain the missing evidence, impact, and fallback. If no Workspace exists, explain its benefits and let the user choose whether and where to create one.
+7. If Workspace, memory, skills, SOPs, retrospectives, or pitfall logs are missing, explain the missing evidence, impact, and fallback. If no Workspace exists, explain its benefits and let the user choose whether and where to create one. Creating or installing this skill is not confirmation to create a Workspace.
 8. Classify candidate memories or optimizations by scope: global, workspace, project, team, or session.
 9. Score candidates by reuse frequency, risk reduction, time saved, cross-device value, existing coverage, and privacy/permission risk.
 10. Label each candidate as `new`, `merge`, `replace`, `downgrade`, `stale`, or `delete suggestion`.
@@ -43,7 +43,7 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 12. Choose operating depth: lightweight by default; strict when the task involves system config, permissions, Git, publishing, deletion, migration, backups, AGENTS/memory/skill edits, external side effects, or user-requested auditability.
 13. Produce an Optimization Report and Candidate Optimizations.
 14. Before any write, show Proposed Changes, backup location, restore plan, files to modify, risk level, backup verification plan, rollback scope, and expected result. Wait for explicit confirmation.
-15. After confirmed changes, verify files, validate skills when possible, compare hashes for synchronized copies, and report changed, skipped, unresolved, and rollback instructions.
+15. After confirmed changes, verify files, validate skills when possible, compare hashes for synchronized copies, and report changed, skipped, unresolved, and rollback instructions. If a Workspace was created, report the final path, created file and directory list, verification result, and exact rollback steps.
 
 ## Reference Routing
 
@@ -64,6 +64,7 @@ When maintaining or publishing this skill, run the repository validator and inst
 - Skill files: only after checking existing coverage and user confirmation.
 - Project docs: only for project-scoped rules.
 - Session notes: for temporary or low-confidence context that should not persist globally.
+- Continuation handoff: when work should continue in a future chat, create or update a concise durable handoff only after confirmation, with current goal, completed work, pending steps, important paths, verification evidence, risks, and next command or question.
 
 ## Do Not
 
