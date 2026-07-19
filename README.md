@@ -12,8 +12,10 @@ It is designed for user-adaptive, privacy-aware, portable self-optimization acro
 - Reduce routine token use with a lightweight default mode while keeping strict safety for risky tasks.
 - Separate scan scope from write policy.
 - Handle missing Workspace, memory, SOP, retrospective, or pitfall logs as a normal degraded mode.
+- Ask whether the user already has a Workspace before looking for one, and never auto-confirm a project folder as Workspace.
 - Confirm Workspace creation separately from skill installation, then report the final path, created files, verification, and rollback steps.
-- Preserve cross-chat continuity through concise handoff notes when useful.
+- Preserve cross-chat continuity through `CODEX_CONTINUATION.md` when useful.
+- Repair folders that were previously misclassified as Workspace through diagnosis, migration choices, backups, and verification.
 - Back up files before writes and provide rollback instructions.
 - Keep private paths, credentials, logs, cookies, and sensitive data out of long-term memory.
 
@@ -119,8 +121,8 @@ Recommended first run:
 
 1. Install `codex-self-optimizer`.
 2. Ask Codex to run a read-only environment check.
-3. Let it report missing evidence instead of treating missing files as failure.
-4. Decide whether to create a Workspace and choose the path yourself.
+3. Tell Codex whether you already have a Workspace. If yes, provide the path and confirm it back. If no, let Codex recommend locations and choose the path yourself.
+4. Let it report missing evidence instead of treating missing files as failure.
 5. If a Workspace is created, check the reported final path, created files, verification result, and rollback steps.
 6. Review the proposed `AGENTS.md`, working-memory, skill-strategy, and verification-habit changes.
 7. Confirm writes only after backup and rollback steps are shown.
@@ -128,7 +130,11 @@ Recommended first run:
 
 ## Continuing In A New Chat
 
-New chats may not have the full previous conversation. For unfinished work, ask Codex to create a concise handoff with the goal, completed work, pending steps, important paths, verification evidence, risks, rollback notes, and next command or question. In the next chat, ask Codex to read that handoff before continuing.
+New chats may not have the full previous conversation. For unfinished work, ask Codex to update `<confirmed-workspace>/CODEX_CONTINUATION.md` with the goal, completed work, pending steps, important paths, verification evidence, risks, rollback notes, and next command or question. In the next chat, ask Codex to use `$codex-self-optimizer` to continue; it should read `CODEX_CONTINUATION.md` first when a confirmed Workspace is known.
+
+## Workspace Misclassification Repair
+
+If a project folder was mistakenly treated as a Workspace, update the skill and then run a repair request. The skill should diagnose that folder read-only, list suspected Workspace-level files, and ask whether to keep it as Workspace, migrate files to a confirmed Workspace, keep them project-local, or clean/move them after backup. Reinstalling the skill prevents future auto-classification, but does not automatically move or delete files already written into the folder.
 
 Optional companion skill categories:
 
@@ -180,7 +186,7 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 
 ## Version
 
-Current version: `0.3.2`
+Current version: `0.4.0`
 
 See `CHANGELOG.md` for release notes.
 

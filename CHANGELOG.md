@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 - 2026-07-20
+
+- Removed automatic Workspace confirmation from filesystem clues. A Workspace must now be explicitly declared and confirmed by the user.
+- Added first-run Workspace questioning: ask whether the user already has a Workspace before recommending or creating one.
+- Added misclassified Workspace repair guidance for folders that were previously treated as Workspace by mistake.
+- Added fixed continuation entrypoint guidance using `CODEX_CONTINUATION.md` for future-chat continuation.
+
 ## 0.3.2 - 2026-07-20
 
 - Clarified that installing or invoking the skill is not confirmation to create a Workspace.

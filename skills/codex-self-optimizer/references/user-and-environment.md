@@ -10,7 +10,9 @@ Use this reference to adapt optimization to the current user, device, available 
 - User Classification
 - Environment Maturity
 - Blank Setup Bootstrap
+- Workspace Declaration
 - Workspace Missing
+- Workspace Misclassification Repair
 - Path Discovery
 - Low Network Or No Network
 - Conversation Continuity
@@ -37,8 +39,9 @@ Before deep scanning or asking scan-mode questions, run a read-only preflight:
 2. Detect `CODEX_HOME` if set.
 3. Detect platform default Codex home such as `%USERPROFILE%\.codex` or `~/.codex`.
 4. Detect visible skills directories and whether `SKILL.md` files exist.
-5. Detect obvious Workspace candidates, but do not create anything.
-6. Record missing evidence and continue with available context.
+5. Record any user-provided Workspace path, drive, or folder name.
+6. Record candidate locations only as candidates. Do not classify any folder as a confirmed Workspace from filesystem clues.
+7. Record missing evidence and continue with available context.
 
 Preflight must not read browser profiles, secrets, large generated files, or credential-bearing data.
 
@@ -82,21 +85,21 @@ Before strategy depends on this classification, show the inferred labels and evi
 
 | Maturity | Signals | Default strategy |
 |---|---|---|
-| Blank | No AGENTS, Workspace, memories, retrospectives, or skills | Build an initial plan from the current goal and readable files |
+| Blank | No confirmed Workspace, AGENTS, memories, retrospectives, or skills | Build an initial plan from the current goal and readable files |
 | Basic | Some AGENTS or a few rules | Check conflicts, gaps, and reusable memories |
-| Mature | Workspace, SOPs, retrospectives, skills, or memories | Do incremental refinement, dedupe, and lifecycle updates |
+| Mature | Confirmed Workspace, SOPs, retrospectives, skills, or memories | Do incremental refinement, dedupe, and lifecycle updates |
 | Team | Shared rules, permissions, audit needs | Suggest first, confirm authority before writes |
 
-Missing Workspace, memory, skills, SOPs, retrospectives, or pitfall logs is not failure. Report what is missing, how it limits confidence, and which fallback strategy will be used.
+Missing confirmed Workspace, memory, skills, SOPs, retrospectives, or pitfall logs is not failure. Report what is missing, how it limits confidence, and which fallback strategy will be used.
 
 ## Blank Setup Bootstrap
 
-Use this path when the user has no other custom skills, no Workspace, no memory, or no durable docs.
+Use this path when the user has no other custom skills, no confirmed Workspace, no memory, or no durable docs.
 
 1. State that this skill can still run as a bootstrap guide, but specialized skills are optional accelerators, not prerequisites.
 2. Run the read-only Bootstrap Preflight and list what exists, what is missing, and what must not be scanned.
 3. Ask for the user's immediate goal in plain language if it is not already clear.
-4. Recommend a Workspace only if it would help continuity; explain benefits and let the user choose the path.
+4. Ask whether the user already has a Workspace. If yes, ask for its path, drive, or folder name and confirm it back. If no, recommend a Workspace only if it would help continuity; explain benefits and let the user choose the path. If unsure, run read-only candidate discovery and ask the user to choose.
 5. Produce an initial plan for `AGENTS.md`, working memory, skill strategy, and verification habits before writing anything.
 6. Suggest foundational skills only as optional next steps. Useful categories include prompt optimization, skill creation, web research, debugging, testing, and verification.
 7. Write only after Proposed Changes, backup or restore records, and explicit user confirmation.
@@ -104,9 +107,21 @@ Use this path when the user has no other custom skills, no Workspace, no memory,
 
 Do not fail because optional skills are absent. Use built-in reasoning and available tools, and record confidence limits clearly.
 
+## Workspace Declaration
+
+Workspace status must be user-declared and confirmed.
+
+1. Before detecting, using, or creating a Workspace, ask whether the user already has a dedicated place for Codex projects, rules, SOPs, retrospectives, pitfalls, skill notes, and long-term memory.
+2. If the user has one, ask for its path, drive, or folder name. Prioritize only that user-provided scope.
+3. Echo the resolved path and ask for confirmation before treating it as `confirmed_workspace`.
+4. If the user has none, recommend dynamic writable locations and wait for the user to choose and confirm.
+5. If the user is unsure, run read-only candidate discovery and label results only as `workspace_candidate`.
+6. Do not treat the current directory, project folder name, `AGENTS.md`, multi-project layout, or existing Codex files as Workspace proof.
+7. Until confirmation, operate at current project or session scope.
+
 ## Workspace Missing
 
-If no Workspace is found:
+If no confirmed Workspace is available:
 
 1. Explain that a Workspace gives one place for projects, SOPs, retrospectives, pitfalls, skill notes, and recovery context.
 2. Explain that this improves cross-session continuity, cross-device recovery, file organization, and future self-optimization.
@@ -119,16 +134,28 @@ If no Workspace is found:
 9. If the user cannot find the Workspace, search only the confirmed candidate path and report evidence before suggesting broader scans.
 10. If the user declines, continue with current project-level or session-level optimization.
 
+## Workspace Misclassification Repair
+
+Use this when a folder was previously treated as a Workspace but the user says it was only a project folder.
+
+1. State that reinstalling or updating the skill prevents future auto-classification, but it does not automatically repair files already written into the misclassified folder.
+2. Ask for the misclassified folder path and the intended Workspace path, if one exists.
+3. Diagnose the misclassified folder read-only first. Identify possible Workspace-level artifacts such as `AGENTS.md`, `CODEX_SELF_OPTIMIZATION.md`, `CODEX_CONTINUATION.md`, SOP folders, retrospective folders, pitfall logs, skill notes, and restore records.
+4. Separate project-owned files from suspected Workspace-level files. Do not delete or move anything during diagnosis.
+5. Offer choices: keep the folder as Workspace, migrate Workspace-level files to a confirmed Workspace, keep them project-local, or clean/move them after backup.
+6. Before any migration, move, delete, or overwrite, show Proposed Changes, create backups or restore records, and wait for explicit confirmation.
+7. After repair, verify the final locations and record the confirmed Workspace path or the decision to operate without one.
+
 ## Path Discovery
 
 Discover paths dynamically in this order:
 
-1. Current workspace or repository root.
-2. Current directory and parent `AGENTS.md` files.
+1. User-declared Workspace path, after confirmation.
+2. Current directory and repository root.
 3. `CODEX_HOME`.
 4. Platform default Codex home.
 5. User-provided paths.
-6. Other user-writable Workspace candidates.
+6. Other user-writable candidate locations.
 
 Never assume a fixed drive, username, operating system, Workspace path, or Codex installation path.
 
@@ -144,9 +171,11 @@ New chats may not inherit the full previous conversation. Do not assume another 
 
 When continuity matters:
 
-1. Check whether a durable handoff, working memory, project note, or task summary exists.
-2. If none exists and the current task has reusable or unfinished state, propose writing a concise handoff before ending or switching chats.
-3. Include only the current goal, decisions, completed work, pending steps, important paths, verification evidence, risks, and the next command or question.
-4. Exclude secrets, private messages, credentials, raw logs, and one-off chatter.
-5. Write the handoff only after backup or restore records and explicit user confirmation.
-6. In a new chat, read the relevant durable handoff or memory before claiming the task can be continued.
+1. Prefer the fixed continuation entrypoint `CODEX_CONTINUATION.md` under the confirmed Workspace.
+2. If no confirmed Workspace exists, ask for the Workspace path or ask whether to use a project-local continuation file for this task.
+3. Check whether `CODEX_CONTINUATION.md`, working memory, project note, or task summary exists.
+4. If none exists and the current task has reusable or unfinished state, propose writing `CODEX_CONTINUATION.md` before ending or switching chats.
+5. Include only the current goal, decisions, completed work, pending steps, important paths, verification evidence, risks, rollback notes, and the next command or question.
+6. Exclude secrets, private messages, credentials, raw logs, and one-off chatter.
+7. Write the continuation file only after backup or restore records and explicit user confirmation.
+8. In a new chat, if the user says "continue" and a confirmed Workspace is known, read `CODEX_CONTINUATION.md` before asking follow-up questions. If it is missing, state the limit and ask for the Workspace path or task source.
