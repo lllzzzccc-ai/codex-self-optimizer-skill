@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 - 2026-07-23
+
+- Added proactive sedimentation behavior for reusable lessons, failure causes, verification checklists, SOP candidates, skill candidates, and environment pitfalls.
+- Added behavior-test coverage for high-risk task endings and simple no-sedimentation questions.
+- Clarified that "the task is over" must not skip valuable sedimentation already produced by the task.
+
 ## 0.4.0 - 2026-07-20
 
 - Removed automatic Workspace confirmation from filesystem clues. A Workspace must now be explicitly declared and confirmed by the user.
