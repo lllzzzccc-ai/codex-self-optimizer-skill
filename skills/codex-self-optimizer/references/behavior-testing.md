@@ -30,6 +30,8 @@ Before publishing a release, run or manually review these gates:
 - Installer dry-run, check, install, and uninstall paths are tested in temporary Codex homes.
 - GitHub Actions or an equivalent local validation script passes.
 - Public files contain no private paths, usernames, emails, credentials, tokens, cookies, or account data.
+- Version bump path updates `VERSION`, `CHANGELOG.md`, README current version, git tag, and GitHub Release together.
+- Release verification path confirms remote `main`, remote tag, GitHub Release page fields, local repository status, validator output, and installed-skill consistency.
 - Blank setup path produces a useful plan without requiring other skills.
 - Existing-user path preserves current user rules and does not force the author's personal defaults.
 - Lightweight path keeps simple tasks concise while strict mode still triggers for risky writes, Git, system config, publishing, deletion, and skill/AGENTS/memory edits.

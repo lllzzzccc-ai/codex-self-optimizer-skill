@@ -59,6 +59,8 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 
 When maintaining or publishing this skill, run the repository validator and installer checks when available. A passing validator is structural evidence only; release notes must still state any untested behavior scenarios.
 
+When bumping or publishing a version, update all release artifacts together: `VERSION`, `CHANGELOG.md`, README current version, git tag, and GitHub Release. Verify remote `main`, remote tag, Release page fields, local repository status, validator output, and installed-skill consistency before claiming the release is complete.
+
 ## Write Targets
 
 - Default long-term output: `CODEX_SELF_OPTIMIZATION.md`.

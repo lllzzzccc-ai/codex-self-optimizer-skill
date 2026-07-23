@@ -186,7 +186,7 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 
 ## Version
 
-Current version: `0.4.1`
+Current version: `0.4.2`
 
 See `CHANGELOG.md` for release notes.
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.2 - 2026-07-23
+
+- Added release-artifact maintenance guidance: version bumps must update version files, changelog, README current version, git tag, and GitHub Release.
+- Added release-gate coverage to verify remote main, remote tag, GitHub Release page, local status, and core validation commands.
+
 ## 0.4.1 - 2026-07-23
 
 - Added proactive sedimentation behavior for reusable lessons, failure causes, verification checklists, SOP candidates, skill candidates, and environment pitfalls.
