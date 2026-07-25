@@ -7,6 +7,7 @@ Use this reference when testing whether the skill works in real scenarios. Valid
 - Test Rules
 - Minimum Release Gate
 - Scenario Matrix
+- UX Smoke Tests
 - Companion Skill Checks
 - Recording Results
 
@@ -71,6 +72,19 @@ Before publishing a release, run or manually review these gates:
 | Long task after several stages | Compress completed stages into 3-5 factual bullets and continue from that summary without rereading unrelated history. |
 | Reusing previously read skill, SOP, AGENTS, or memory | Check whether the source likely changed; if changed or high-risk, reread it, otherwise reuse the summary. |
 | High-risk task | Switch to strict mode even if the user asks for speed; preserve backup, confirmation, and verification. |
+
+## UX Smoke Tests
+
+Use three checks: low-friction, no unsafe write, clear next step.
+
+Prompts:
+
+- Help optimize Codex.
+- I have no Workspace.
+- I do not know what AGENTS.md is.
+- I changed device; continue my setup.
+- Analyze only; do not write.
+- This folder is a project, not a Workspace.
 
 ## Companion Skill Checks
 

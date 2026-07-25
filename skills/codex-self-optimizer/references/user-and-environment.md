@@ -5,6 +5,7 @@ Use this reference to adapt optimization to the current user, device, available 
 ## Contents
 
 - Goal Handling
+- Smart Entrypoint
 - Bootstrap Preflight
 - Scan Scope And Write Policy
 - User Classification
@@ -30,6 +31,15 @@ Ask one question at a time only when needed. Useful clarifications:
 5. What does success look like?
 
 For non-technical users, avoid abstract mode labels at first. Ask plain questions such as: "Do you want me to help set up one place for Codex projects and notes?"
+
+## Smart Entrypoint
+
+Use smart judgment without guessing the user's real goal.
+
+- If the request has a clear goal, scope, output, risk, and write intent, start with read-only analysis.
+- If the user gives a vague optimization request such as "optimize Codex", "set up Codex", or "improve this skill", ask one plain goal question first.
+- For vague requests, do not run a full deep scan, ask abstract mode questions, or write files before the goal is clear.
+- A useful first question is: "What do you mainly want Codex to improve this time: less repeated explaining, safer execution, or easier continuation?"
 
 ## Bootstrap Preflight
 
@@ -109,21 +119,22 @@ Do not fail because optional skills are absent. Use built-in reasoning and avail
 
 ## Workspace Declaration
 
-Workspace status must be user-declared and confirmed.
+Workspace status must be user-declared and confirmed. Use the user-facing term Codex fixed workspace / Codex 固定工作区 for a fixed folder that stores Codex tasks, rules, notes, backups, continuation files, and reusable lessons.
 
-1. Before detecting, using, or creating a Workspace, ask whether the user already has a dedicated place for Codex projects, rules, SOPs, retrospectives, pitfalls, skill notes, and long-term memory.
+1. Before detecting, using, or creating a Workspace, ask whether the user already has a fixed folder for Codex projects, rules, SOPs, retrospectives, pitfalls, skill notes, and long-term memory.
 2. If the user has one, ask for its path, drive, or folder name. Prioritize only that user-provided scope.
 3. Echo the resolved path and ask for confirmation before treating it as `confirmed_workspace`.
 4. If the user has none, recommend dynamic writable locations and wait for the user to choose and confirm.
 5. If the user is unsure, run read-only candidate discovery and label results only as `workspace_candidate`.
 6. Do not treat the current directory, project folder name, `AGENTS.md`, multi-project layout, or existing Codex files as Workspace proof.
 7. Until confirmation, operate at current project or session scope.
+8. Do not move or copy user files into it automatically. If a task must stay in its original project, work there and store only confirmed records or indexes in the Codex fixed workspace.
 
 ## Workspace Missing
 
 If no confirmed Workspace is available:
 
-1. Explain that a Workspace gives one place for projects, SOPs, retrospectives, pitfalls, skill notes, and recovery context.
+1. Explain that a Codex fixed workspace gives one place for projects, SOPs, retrospectives, pitfalls, skill notes, backups, and recovery context.
 2. Explain that this improves cross-session continuity, cross-device recovery, file organization, and future self-optimization.
 3. Detect available user-writable locations before recommending paths.
 4. On Windows, prefer a non-system disk only when one is detected and writable. If none is available, suggest a user-profile Workspace. On macOS/Linux, suggest a home-directory Workspace.

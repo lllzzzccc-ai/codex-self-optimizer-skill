@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0 - 2026-07-25
+
+- Added smart first-step behavior: vague optimization requests get one plain goal question before deep scans, while clear requests go directly to read-only analysis.
+- Added Codex fixed workspace / Codex 固定工作区 wording and safeguards so project folders are not treated as the user's fixed workspace or auto-filled with copied files.
+- Added light vs strict confirmation tiers to reduce friction for low-risk new content while preserving strict backup, rollback, and verification for risky changes.
+- Added tiny effect summaries and lightweight internal acceptance checks so users can see what improved without long reports by default.
+- Added UX smoke tests for common first-run prompts, missing Workspace, unknown `AGENTS.md`, device changes, analysis-only requests, and project-folder misclassification.
+- Hardened repository validation with unit tests, multiline YAML frontmatter parsing, Python cache ignores, and clearer Windows/Bash validation guidance.
+
 ## 0.4.3 - 2026-07-25
 
 - Added efficient-execution priority guidance: completion quality, rollback safety, and verification come before token reduction.

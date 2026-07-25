@@ -7,6 +7,7 @@ Use this reference before any file creation, write, move, delete, overwrite, or 
 - Backup Rule
 - Backup Verification
 - Required Pre-Write Notice
+- Confirmation Tiers
 - Exception Classification
 - Risk Levels
 - Batch Rollback Contract
@@ -41,6 +42,16 @@ Before writing, verify:
 - Restore steps are known before the first write.
 
 Backup failure is a Stop-level issue. Do not write until resolved or the user chooses a different target.
+
+## Confirmation Tiers
+
+Confirmation tier only shortens the explanation, not the safety actions.
+
+Light confirmation applies to low-risk actions that do not overwrite existing content, such as creating an empty directory, writing a new draft, writing the current analysis report, or creating initial files in a confirmed new location. It must state what will change, the target path, whether anything is overwritten, how to undo it, and then wait for confirmation.
+
+Strict confirmation applies to `AGENTS.md`, skills, memory, system config, permissions, Git, publishing, deletion, migration, overwrites, batch operations, external side effects, or shared/team files. It must state target files, scope, backup location, restore steps, risk level, verification method, expected result, and then wait for confirmation.
+
+If a light-confirmation task discovers an existing target, path ambiguity, permission issue, overwrite risk, wider scope, or runtime anomaly, upgrade to strict confirmation before continuing.
 
 ## Required Pre-Write Notice
 

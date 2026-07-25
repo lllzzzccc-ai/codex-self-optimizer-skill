@@ -12,8 +12,12 @@ It is designed for user-adaptive, privacy-aware, portable self-optimization acro
 - Reduce routine token use with a lightweight default mode while keeping strict safety for risky tasks.
 - Separate scan scope from write policy.
 - Handle missing Workspace, memory, SOP, retrospective, or pitfall logs as a normal degraded mode.
+- Use a smart first step: clear requests go to read-only analysis; vague optimization requests get one plain goal question first.
 - Ask whether the user already has a Workspace before looking for one, and never auto-confirm a project folder as Workspace.
+- Use the plain concept "Codex fixed workspace / Codex 固定工作区": a user-confirmed fixed folder for Codex tasks, rules, notes, backups, and continuation files.
 - Confirm Workspace creation separately from skill installation, then report the final path, created files, verification, and rollback steps.
+- Use light confirmation for low-risk new content and strict confirmation for risky changes.
+- End important changes with a tiny effect summary when useful, not a long report by default.
 - Preserve cross-chat continuity through `CODEX_CONTINUATION.md` when useful.
 - Repair folders that were previously misclassified as Workspace through diagnosis, migration choices, backups, and verification.
 - Back up files before writes and provide rollback instructions.
@@ -25,7 +29,8 @@ For a first-time or non-technical user:
 
 1. Install the skill.
 2. Ask Codex: `Use $codex-self-optimizer to set up my Codex working memory and rules.`
-3. Review the proposed changes, backup plan, and rollback steps before approving any writes.
+3. If your request is broad, answer the one goal question first.
+4. Review the proposed changes, backup plan, and rollback steps before approving any writes.
 
 No other custom skills are required for the first run.
 
@@ -121,7 +126,7 @@ Recommended first run:
 
 1. Install `codex-self-optimizer`.
 2. Ask Codex to run a read-only environment check.
-3. Tell Codex whether you already have a Workspace. If yes, provide the path and confirm it back. If no, let Codex recommend locations and choose the path yourself.
+3. Tell Codex whether you already have a Codex fixed workspace. If yes, provide the path and confirm it back. If no, let Codex explain the benefit, recommend locations, and let you choose the path yourself.
 4. Let it report missing evidence instead of treating missing files as failure.
 5. If a Workspace is created, check the reported final path, created files, verification result, and rollback steps.
 6. Review the proposed `AGENTS.md`, working-memory, skill-strategy, and verification-habit changes.
@@ -149,6 +154,7 @@ These companion skills improve quality and automation, but they are not required
 ## Behavior Testing
 
 The skill includes `references/behavior-testing.md` for release checks. It covers blank setup, missing evidence, privacy-sensitive users, team rules, write confirmation, backup failure, rollback, and prompt-injection defense.
+It also includes UX smoke tests for common user prompts such as broad optimization requests, no Workspace, unknown `AGENTS.md`, device changes, analysis-only requests, and project-folder misclassification.
 
 Use validator success as a structure check only. Use behavior scenarios before claiming workflow coverage.
 
@@ -189,7 +195,7 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 
 ## Version
 
-Current version: `0.4.3`
+Current version: `0.5.0`
 
 See `CHANGELOG.md` for release notes.
 

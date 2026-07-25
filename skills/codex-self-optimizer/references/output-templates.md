@@ -16,6 +16,7 @@ Use these templates for reports, confirmation, rollback, and self-test communica
 - Self-Test Notice
 - Self-Test Record
 - Token-Efficient Summary
+- Tiny Effect Summary
 
 ## Optimization Report
 
@@ -204,4 +205,14 @@ Do not claim behavioral coverage from validator success alone. Validator success
 - Changed files:
 - Skipped or truncated details:
 - Full logs available when:
+```
+
+## Tiny Effect Summary
+
+Use only after an actual write, clear recommendation, risk, missing evidence, or unresolved item. Keep it a maximum three lines, each no more than 25 Chinese characters or equivalent. Do not include process narration, long logs, or repeated verification details.
+
+```text
+Effect:
+Improves:
+Note:
 ```
