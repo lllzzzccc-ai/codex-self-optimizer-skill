@@ -21,6 +21,8 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 - Store only high-frequency, high-value, cross-context, reusable, evidence-backed information.
 - When a task contains reusable lessons, failure causes, verification checklists, SOP candidates, skill candidates, or environment pitfalls, actively propose or perform the confirmed sedimentation path before final delivery; do not wait for the user to notice it.
 - Optimize for token efficiency without reducing safety: keep simple tasks lightweight, and switch to strict mode for high-risk tasks.
+- Treat token reduction as a context-budget practice, not the primary goal. Correct completion, repair effectiveness, rollback safety, verification quality, and user intent come first. Save tokens by reducing irrelevant context, repeated reads, long logs, process narration, and low-value memory, not by skipping necessary work.
+- If task class, risk, needed context, clarification need, or sedimentation value is uncertain, raise the handling level instead of lowering it to save tokens.
 - Summarize long logs, validation output, and skill rationale by default; expand only for failures, high-risk decisions, audits, or user request.
 - Keep paths, usernames, disks, operating systems, Codex home, and workspace locations dynamic.
 - Never auto-classify any folder as a confirmed Workspace. Workspace status requires explicit user declaration and confirmation; detected folders are only candidates.
@@ -46,6 +48,7 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 13. Produce an Optimization Report and Candidate Optimizations.
 14. Before any write, show Proposed Changes, backup location, restore plan, files to modify, risk level, backup verification plan, rollback scope, and expected result. Wait for explicit confirmation.
 15. After confirmed changes, verify files, validate skills when possible, compare hashes for synchronized copies, and report changed, skipped, unresolved, and rollback instructions. If a Workspace was created, report the final path, created file and directory list, verification result, and exact rollback steps. If continuation state was updated, report the `CODEX_CONTINUATION.md` path and the next-start instruction.
+16. For rule, memory, skill, or workflow optimizations, run a residual-risk self-check before final delivery: assume the change is already active, then check for misclassified task depth, missed context, missed clarification, stale reused summaries, missing release artifacts, weak verification evidence, missing sedimentation, and long-task drift. If a preventable gap remains, add a guardrail before claiming the optimization is complete.
 
 ## Reference Routing
 
@@ -60,6 +63,8 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 When maintaining or publishing this skill, run the repository validator and installer checks when available. A passing validator is structural evidence only; release notes must still state any untested behavior scenarios.
 
 When bumping or publishing a version, update all release artifacts together: `VERSION`, `CHANGELOG.md`, README current version, git tag, and GitHub Release. Verify remote `main`, remote tag, Release page fields, local repository status, validator output, and installed-skill consistency before claiming the release is complete.
+
+When optimizing execution efficiency, keep a minimum evidence package in the final report: result, key paths, verification evidence, backup or rollback location, and unresolved items. Use stage summaries for long tasks, and reuse prior skill or rule summaries only after confirming the source did not change.
 
 ## Write Targets
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.3 - 2026-07-25
+
+- Added efficient-execution priority guidance: completion quality, rollback safety, and verification come before token reduction.
+- Added context-budget guardrails for minimum necessary context, stage summaries, unchanged-skill reuse, and minimum evidence packages.
+- Added self-check loop guidance for detecting residual risks after optimization rules are assumed to be written.
+- Added a minimal global AGENTS bridge so efficient-execution guardrails still apply outside the Workspace without copying long Workspace rules.
+
 ## 0.4.2 - 2026-07-23
 
 - Added release-artifact maintenance guidance: version bumps must update version files, changelog, README current version, git tag, and GitHub Release.
