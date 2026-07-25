@@ -35,7 +35,7 @@ def read_text(path: Path) -> str:
 
 
 def parse_frontmatter(text: str) -> dict[str, str]:
-    match = re.match(r"^---\n(.*?)\n---\n", text, flags=re.DOTALL)
+    match = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n", text, flags=re.DOTALL)
     if not match:
         fail("SKILL.md missing YAML frontmatter")
 
@@ -44,11 +44,35 @@ def parse_frontmatter(text: str) -> dict[str, str]:
         fail("SKILL.md frontmatter exceeds 1024 characters")
 
     values: dict[str, str] = {}
-    for line in raw.splitlines():
+    lines = raw.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        i += 1
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
         if ":" not in line:
             continue
         key, value = line.split(":", 1)
-        values[key.strip()] = value.strip().strip('"').strip("'")
+        key = key.strip()
+        value = value.strip()
+
+        if value in {">", "|"}:
+            block_lines: list[str] = []
+            while i < len(lines):
+                continuation = lines[i]
+                if continuation and not continuation[0].isspace():
+                    break
+                block_lines.append(continuation.strip())
+                i += 1
+
+            if value == ">":
+                values[key] = " ".join(part for part in block_lines if part).strip()
+            else:
+                values[key] = "\n".join(block_lines).strip()
+            continue
+
+        values[key] = value.strip('"').strip("'")
     return values
 
 
@@ -101,6 +125,7 @@ def validate_docs() -> None:
         ROOT / "CONTRIBUTING.md",
         ROOT / "scripts" / "install.ps1",
         ROOT / "scripts" / "install.sh",
+        ROOT / "scripts" / "test_validate.py",
         ROOT / ".github" / "workflows" / "validate.yml",
         ROOT / "examples" / "blank-setup-report.md",
         ROOT / "examples" / "proposed-changes.md",

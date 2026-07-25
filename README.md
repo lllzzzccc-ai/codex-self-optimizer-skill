@@ -155,10 +155,12 @@ Use validator success as a structure check only. Use behavior scenarios before c
 Run local validation from the repository root:
 
 ```bash
-python scripts/validate.py
+python -B scripts/validate.py
+python -B scripts/test_validate.py
 ```
 
 GitHub Actions runs the same repository validation plus PowerShell and Bash installer checks on push and pull request.
+If Bash is not installed locally on Windows, use the PowerShell installer checks locally; Bash syntax and install checks are covered by Linux CI.
 
 Example outputs are in `examples/`:
 
@@ -179,6 +181,7 @@ Example outputs are in `examples/`:
 - It cannot guarantee behavior from validators alone; scenario testing is still required.
 - It should not replace organization policy, security review, or user authority checks.
 - It should not copy one user's personal always-on skill list into another user's setup.
+- Windows machines without Bash cannot run the Bash installer locally; use CI or a Linux/macOS shell for that path.
 
 ## Contributing And Security
 

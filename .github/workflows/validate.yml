@@ -24,6 +24,9 @@ jobs:
       - name: Validate repository structure and public content
         run: python scripts/validate.py
 
+      - name: Run validator unit tests
+        run: python -B scripts/test_validate.py
+
       - name: Parse PowerShell installer
         shell: pwsh
         run: |
