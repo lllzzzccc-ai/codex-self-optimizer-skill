@@ -22,6 +22,7 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 - Store only high-frequency, high-value, cross-context, reusable, evidence-backed information.
 - When a task contains reusable lessons, failure causes, verification checklists, SOP candidates, skill candidates, or environment pitfalls, actively propose or perform the confirmed sedimentation path before final delivery; do not wait for the user to notice it.
 - Optimize for token efficiency without reducing safety: keep simple tasks lightweight, and switch to strict mode for high-risk tasks.
+- Use Task Tiers before loading extra context: light answer, quick analysis, execution, or release.
 - Treat token reduction as a context-budget practice, not the primary goal. Correct completion, repair effectiveness, rollback safety, verification quality, and user intent come first. Save tokens by reducing irrelevant context, repeated reads, long logs, process narration, and low-value memory, not by skipping necessary work.
 - If task class, risk, needed context, clarification need, or sedimentation value is uncertain, raise the handling level instead of lowering it to save tokens.
 - Summarize long logs, validation output, and skill rationale by default; expand only for failures, high-risk decisions, audits, or user request.
@@ -55,7 +56,7 @@ Create a cautious, evidence-backed optimization plan for Codex behavior, memory,
 ## Reference Routing
 
 - Read `references/user-and-environment.md` when bootstrapping, choosing scan scope, adapting to user groups, handling missing Workspace, or making path decisions.
-- Read `references/memory-and-sources.md` when scanning evidence, optimizing user prompts, reviewing skill coverage, researching missing capabilities, or deciding what becomes memory.
+- Read `references/memory-and-sources.md` when scanning evidence, optimizing user prompts, reviewing skill coverage, researching missing capabilities, deciding what becomes memory, or choosing Task Tiers.
 - Read `references/safety-and-rollback.md` before proposing or performing any file change.
 - Read `references/output-templates.md` before producing reports, confirmation checklists, restore plans, or self-test notes.
 - Read `references/behavior-testing.md` before claiming behavioral coverage, planning release validation, or testing this skill on blank, basic, mature, privacy-sensitive, or team environments.

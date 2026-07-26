@@ -66,6 +66,19 @@ class UserExperienceRuleTests(unittest.TestCase):
         self.assertIn("maximum three lines", text)
         self.assertIn("25 Chinese characters", text)
 
+    def test_task_tiers_reduce_token_use_without_skipping_safety(self) -> None:
+        skill = self.read("skills/codex-self-optimizer/SKILL.md")
+        memory = self.read("skills/codex-self-optimizer/references/memory-and-sources.md")
+        behavior = self.read("skills/codex-self-optimizer/references/behavior-testing.md")
+
+        self.assertIn("Task Tiers", skill)
+        self.assertIn("light-answer tier", memory)
+        self.assertIn("quick-analysis tier", memory)
+        self.assertIn("execution tier", memory)
+        self.assertIn("release tier", memory)
+        self.assertIn("Do not treat opinion or feasibility questions as release tasks", memory)
+        self.assertIn("Task tiering", behavior)
+
     def test_ux_smoke_tests_cover_common_user_prompts(self) -> None:
         text = self.read("skills/codex-self-optimizer/references/behavior-testing.md")
 

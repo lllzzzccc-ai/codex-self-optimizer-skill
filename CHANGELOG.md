@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1 - 2026-07-26
+
+- Added Task Tiers to reduce routine token use without skipping required safety steps.
+- Kept opinion and feasibility questions in a light-answer tier by default.
+- Added quick-analysis, execution, and release tiers with minimum outputs for each.
+- Clarified that publishing, tagging, and GitHub Release updates remain full release-tier tasks.
+
 ## 0.5.0 - 2026-07-25
 
 - Added smart first-step behavior: vague optimization requests get one plain goal question before deep scans, while clear requests go directly to read-only analysis.

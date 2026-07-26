@@ -176,6 +176,26 @@ Treat context budget as a user resource.
 - Expand full logs only for failures, audit requests, security-sensitive decisions, or when the user asks.
 - Do not persist raw logs as memory. Extract reusable lessons and cite where detailed evidence can be found.
 
+## Task Tiers
+
+Choose the lowest tier that can safely satisfy the user request. If risk, scope, or write intent is unclear, raise the tier only as far as needed.
+
+| Tier | Use when | Default behavior |
+|---|---|---|
+| light-answer tier | Opinion, feasibility, explanation, "what is this", or "how should I think about it" | Answer directly; do not read repositories, run commands, or load extra references unless needed |
+| quick-analysis tier | User asks to inspect, compare, or assess without changing files | Read the smallest relevant evidence; report conclusion and next step |
+| execution tier | User asks to edit files, install, configure, repair, migrate, or create durable state | Diagnose, back up or record rollback, change the confirmed scope, and verify |
+| release tier | User asks to commit, push, tag, publish, update Release, or sync version artifacts | Run the full release checklist and verify remote state |
+
+Do not treat opinion or feasibility questions as release tasks. Do not escalate to execution because a possible future implementation exists. Do not run full scans for vague optimization requests before asking the one goal question.
+
+Minimum outputs:
+
+- light-answer tier: answer only.
+- quick-analysis tier: conclusion, key evidence, next step.
+- execution tier: result, paths, verification, rollback, unresolved items.
+- release tier: result, commit, tag or release, verification, rollback, unresolved items.
+
 ## Continuation Handoffs
 
 Use `CODEX_CONTINUATION.md` when the next chat, device, or session needs to continue unfinished work. It is a fixed entrypoint, not a full transcript.

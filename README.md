@@ -114,8 +114,10 @@ The skill should analyze first, show proposed changes, back up files, and write 
 The skill treats token budget as a user resource:
 
 - Simple Q&A and low-risk routine work should stay concise.
+- Opinion and feasibility questions stay in a light-answer tier by default.
+- Inspection-only requests use a quick-analysis tier with the smallest relevant evidence.
 - Execution, file changes, research, plans, and high-risk tasks should briefly state selected skills and purpose.
-- Git, publishing, deletion, migration, system config, permissions, backups, AGENTS, memory, and skill edits should switch to strict mode with backup, confirmation, and verification.
+- Git, publishing, deletion, migration, system config, permissions, backups, AGENTS, memory, and skill edits should switch to execution or release tier with backup, confirmation, and verification.
 - Validation results should report key evidence by default. Full logs should be expanded for failures, audits, security-sensitive decisions, or user request.
 
 ## Bootstrap From Blank Setup
@@ -195,7 +197,7 @@ See `CONTRIBUTING.md` for contribution rules and `SECURITY.md` for vulnerability
 
 ## Version
 
-Current version: `0.5.0`
+Current version: `0.5.1`
 
 See `CHANGELOG.md` for release notes.
 
